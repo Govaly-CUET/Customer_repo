@@ -1,0 +1,591 @@
+/* =========================================================
+   GOVALY FOOTER
+   Production-style footer
+   ========================================================= */
+
+.footer {
+  width: 100%;
+  background: #ffffff;
+  color: #191919;
+  border-top: 1px solid #e5e7eb;
+  margin-top: 20px;
+}
+
+/* ---------------------------------------------------------
+   Main Footer Container
+   --------------------------------------------------------- */
+
+.footer > .container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 16px 16px 4px;
+}
+
+/* ---------------------------------------------------------
+   Main Footer Grid
+   --------------------------------------------------------- */
+
+.footer-grid {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 32px;
+}
+
+/* ---------------------------------------------------------
+   Brand Section
+   --------------------------------------------------------- */
+
+/* =========================
+   FOOTER BRAND
+========================= */
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 280px;
+}
+
+.fbrand {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.footer-logo-link {
+  display: flex;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.footer-logo {
+  width: 68px;
+  height: 68px;
+  object-fit: contain;
+  display: block;
+  border-radius: 6px;
+}
+
+/* Govaly + tagline + DBID */
+.footer-brand-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 2px;
+}
+
+.footer-brand-name {
+  margin: 0;
+  font-size: 32px;
+  line-height: 1.05;
+  font-weight: 700;
+  color: #191919;
+}
+
+.footer-tagline {
+  margin: 7px 0 0;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #191919;
+  white-space: nowrap;
+}
+
+.footer-dbid {
+  margin: 5px 0 0;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #191919;
+}
+
+.footer-dbid strong {
+  font-weight: 700;
+}
+
+
+/* =========================
+   APP DOWNLOAD
+========================= */
+
+.footer-app {
+  margin-top: 24px;
+}
+
+.footer-app-title {
+  margin: 0 0 10px;
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 500;
+  color: #191919;
+}
+
+.footer-app-title span {
+  color: #e2136e;
+  font-weight: 600;
+}
+
+.footer-app-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.app-store-btn {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  min-height: 44px;
+  padding: 7px 12px;
+
+  border: 1.5px solid #191919;
+  border-radius: 6px;
+
+  background: #fff;
+  color: #191919;
+  text-decoration: none;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.app-store-btn:hover {
+  background: #f8f8f8;
+  transform: translateY(-1px);
+}
+
+.app-store-btn svg {
+  flex-shrink: 0;
+}
+
+.apple-logo {
+  width: 22px;
+  height: 25px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.app-store-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.app-store-text p {
+  margin: 0;
+  color: #191919;
+}
+
+.app-store-text p:first-child {
+  font-size: 9px;
+  line-height: 12px;
+  font-weight: 400;
+}
+
+.app-store-text p:last-child {
+  font-size: 15px;
+  line-height: 17px;
+  font-weight: 500;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+  .footer-brand {
+    min-width: 100%;
+  }
+
+  .footer-logo {
+    width: 60px;
+    height: 60px;
+  }
+
+  .footer-brand-name {
+    font-size: 28px;
+  }
+
+  .footer-tagline {
+    font-size: 12px;
+    white-space: normal;
+  }
+
+  .footer-dbid {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .fbrand {
+    gap: 10px;
+  }
+
+  .footer-logo {
+    width: 54px;
+    height: 54px;
+  }
+
+  .footer-brand-name {
+    font-size: 25px;
+  }
+
+  .footer-app-buttons {
+    flex-wrap: wrap;
+  }
+
+  .app-store-btn {
+    min-height: 42px;
+    padding: 6px 10px;
+  }
+}
+/* ---------------------------------------------------------
+   Footer Columns
+   --------------------------------------------------------- */
+
+.footer-column {
+  flex: 0 1 auto;
+  min-width: 210px;
+  color: #191919;
+}
+
+.footer-column h4 {
+  margin: 0 0 12px;
+
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: 600;
+
+  color: #191919;
+}
+
+.footer-column ul {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  min-width: 230px;
+}
+
+.footer-column li {
+  margin: 0;
+  padding: 0;
+}
+
+.footer-column li a {
+  display: inline-block;
+
+  font-size: 14px;
+  line-height: 1.5;
+
+  color: #191919;
+  text-decoration: none;
+
+  transition: color 0.2s ease;
+}
+
+.footer-column li a:hover {
+  color: #e2136e;
+}
+
+/* ---------------------------------------------------------
+   Social Links
+   --------------------------------------------------------- */
+
+.footer-socials {
+  min-width: 150px !important;
+}
+
+.footer-social-link {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+
+  width: fit-content;
+}
+
+.footer-social-icon {
+  width: 18px;
+  height: 18px;
+
+  flex-shrink: 0;
+
+  color: #191919;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.footer-social-link:hover .footer-social-icon {
+  color: #e2136e;
+  transform: scale(1.05);
+}
+
+/* ---------------------------------------------------------
+   Payment Section
+   --------------------------------------------------------- */
+
+.payment-strip {
+  width: 100%;
+  background: #ffffff;
+}
+
+.payment-strip > .container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 4px 16px 8px;
+}
+
+.payment-image-wrapper {
+  width: 100%;
+  padding-top: 4px;
+}
+
+.payment-section-image {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  object-fit: contain;
+}
+
+/* ---------------------------------------------------------
+   Footer Bottom
+   --------------------------------------------------------- */
+
+.footer-bottom {
+  width: 100%;
+
+  border-top: 1px solid #e5e7eb;
+
+  padding: 12px 16px;
+
+  text-align: center;
+
+  font-size: 16px;
+  line-height: 1.5;
+
+  color: #191919;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+/* Large desktop */
+
+@media (min-width: 1440px) {
+  .footer > .container,
+  .payment-strip > .container {
+    max-width: 1400px;
+  }
+
+  .footer-grid {
+    gap: 40px;
+  }
+}
+
+/* ---------------------------------------------------------
+   Tablet
+   --------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .footer-brand {
+    min-width: 0;
+  }
+
+  .footer-column {
+    min-width: 0;
+  }
+
+  .footer-column ul {
+    min-width: 0;
+  }
+}
+
+/* ---------------------------------------------------------
+   Small Tablet
+   --------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  .footer {
+    margin-top: 16px;
+  }
+
+  .footer > .container {
+    padding: 20px 16px 8px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 24px;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+
+  .footer-logo {
+    width: 64px;
+    height: 64px;
+  }
+
+  .footer-column {
+    min-width: 0;
+  }
+
+  .footer-column h4 {
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+
+  .footer-column li a {
+    font-size: 13px;
+  }
+
+  .payment-strip > .container {
+    padding: 4px 12px 8px;
+  }
+
+  .footer-bottom {
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+}
+
+/* ---------------------------------------------------------
+   Mobile
+   --------------------------------------------------------- */
+
+@media (max-width: 576px) {
+  .footer {
+    margin-top: 12px;
+  }
+
+  .footer > .container {
+    padding: 18px 14px 6px;
+  }
+
+  .footer-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .footer-brand {
+    width: 100%;
+  }
+
+  .fbrand {
+    gap: 8px;
+  }
+
+  .footer-logo {
+    width: 60px;
+    height: 60px;
+  }
+
+  .footer-tagline {
+    font-size: 11px;
+  }
+
+  .footer-dbid {
+    font-size: 11px;
+  }
+
+  .footer-app {
+    padding: 12px 0 4px;
+  }
+
+  .footer-app-title {
+    font-size: 13px;
+  }
+
+  .footer-app-buttons {
+    gap: 8px;
+  }
+
+  .app-store-btn {
+    min-height: 42px;
+    padding: 7px 10px;
+  }
+
+  .app-store-btn svg {
+    width: 21px;
+    height: 24px;
+  }
+
+  .apple-logo {
+    width: 18px;
+    height: 23px;
+  }
+
+  .app-store-text p:first-child {
+    font-size: 9px;
+  }
+
+  .app-store-text p:last-child {
+    font-size: 13px;
+  }
+
+  .footer-column {
+    width: 100%;
+  }
+
+  .footer-column h4 {
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+
+  .footer-column ul {
+    gap: 3px;
+  }
+
+  .footer-column li a {
+    font-size: 13px;
+  }
+
+  .payment-strip > .container {
+    padding: 4px 8px 6px;
+  }
+
+  .footer-bottom {
+    font-size: 13px;
+    padding: 10px 8px;
+  }
+}
+
+/* ---------------------------------------------------------
+   Very Small Mobile
+   --------------------------------------------------------- */
+
+@media (max-width: 380px) {
+  .footer-app-buttons {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .app-store-btn {
+    width: fit-content;
+  }
+}

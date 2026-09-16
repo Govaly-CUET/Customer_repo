@@ -1,0 +1,284 @@
+/* =========================================================
+   GOVALY CATEGORY CAROUSEL
+   ========================================================= */
+
+.govaly-category-section {
+  width: 100%;
+  margin-top: 4px;
+  padding-left: 16px;
+  padding-right: 16px;
+  background: #fff2f8;
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   DESKTOP
+   ========================================================= */
+
+.govaly-category-desktop {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.govaly-category-row {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  padding: 0;
+  margin: 0;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.govaly-category-row::-webkit-scrollbar {
+  display: none;
+}
+
+/* =========================================================
+   CATEGORY SLIDE
+   ========================================================= */
+
+.govaly-category-slide {
+  flex: 0 0 150px;
+  width: 150px;
+
+  display: block;
+
+  padding: 0;
+  margin: 0;
+
+  box-sizing: border-box;
+
+  color: inherit;
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+/* =========================================================
+   CATEGORY CARD
+   ========================================================= */
+
+.govaly-category-card {
+  width: 150px;
+  height: 150px;
+
+  padding: 0;
+  margin: 0;
+
+  background: #fff;
+
+  border-radius: 6px;
+
+  overflow: hidden;
+
+  box-shadow: 0 1px 3px rgba(226, 19, 110, 0.1);
+
+  transition: box-shadow 0.2s ease;
+}
+
+.govaly-category-slide:hover .govaly-category-card {
+  box-shadow: 0 4px 10px rgba(226, 19, 110, 0.14);
+}
+
+/* =========================================================
+   CATEGORY IMAGE
+   ========================================================= */
+
+.govaly-category-image {
+  width: 150px;
+  height: 150px;
+
+  margin: 0 auto;
+
+  position: relative;
+
+  overflow: hidden;
+
+  background: #f3f4f6;
+
+  border-radius: 6px;
+}
+
+.govaly-category-image img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition:
+    transform 200ms ease-in-out;
+}
+
+.govaly-category-slide:hover
+.govaly-category-image img {
+  transform: scale(1.05);
+}
+
+/* =========================================================
+   CATEGORY NAME
+   ========================================================= */
+
+.govaly-category-name {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  margin-top: 4px;
+  padding: 4px 8px;
+
+  text-align: center;
+
+  color: #1f2937;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  line-height: 10px;
+
+  letter-spacing: -0.01em;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* =========================================================
+   MOBILE HIDDEN / DESKTOP VISIBLE
+   ========================================================= */
+
+.govaly-category-mobile {
+  display: none;
+}
+
+/* =========================================================
+   TABLET + DESKTOP
+   ========================================================= */
+
+@media (min-width: 768px) {
+  .govaly-category-section {
+    margin-top: 8px;
+
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .govaly-category-desktop {
+    display: flex;
+  }
+
+  .govaly-category-mobile {
+    display: none;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 767px) {
+  .govaly-category-section {
+    margin-top: 4px;
+
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /* Hide desktop two-row version */
+  .govaly-category-desktop {
+    display: none;
+  }
+
+  /* Show mobile single horizontal row */
+  .govaly-category-mobile {
+    width: 100%;
+
+    display: flex;
+    align-items: flex-start;
+
+    gap: 8px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    padding: 0;
+    margin: 0;
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .govaly-category-mobile::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* =======================================================
+     MOBILE SLIDE
+     ======================================================= */
+
+  .govaly-category-mobile
+  .govaly-category-slide {
+    flex: 0 0 75px;
+    width: 75px;
+  }
+
+  /* =======================================================
+     MOBILE CARD
+     ======================================================= */
+
+  .govaly-category-mobile
+  .govaly-category-card {
+    width: 75px;
+    height: 75px;
+
+    border-radius: 6px;
+  }
+
+  /* =======================================================
+     MOBILE IMAGE
+     ======================================================= */
+
+  .govaly-category-mobile
+  .govaly-category-image {
+    width: 75px;
+    height: 75px;
+
+    border-radius: 6px;
+  }
+
+  /* =======================================================
+     MOBILE CATEGORY NAME
+     ======================================================= */
+
+  .govaly-category-mobile
+  .govaly-category-name {
+    width: 100%;
+
+    margin-top: 4px;
+
+    padding: 4px 8px;
+
+    font-size: 10px;
+    font-weight: 500;
+
+    line-height: 10px;
+
+    white-space: normal;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+
+    overflow: hidden;
+  }
+}
