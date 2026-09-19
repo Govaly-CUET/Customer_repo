@@ -111,6 +111,12 @@ function TrackTimeline({ orderId, fallbackStatus }) {
           })}
         </div>
       )}
+      {track.shipment?.stage && <div className="track-note">{track.shipment.stage}</div>}
+      {track.shipment?.consignmentId && (
+        <div className="track-note mut">
+          Courier: {track.shipment.courier === 'pathao' ? 'Pathao' : track.shipment.courier} · Tracking ID: <b>{track.shipment.consignmentId}</b>
+        </div>
+      )}
     </div>
   );
 }
@@ -126,7 +132,7 @@ function OrderCard({ o, onChanged }) {
   const productHref = (item) => `/product/${item.product?.slug || item.product?._id || item.product || ''}`;
 
   const delivered = o.status === 'Delivered';
-  const cancellable = CANCELLABLE_FROM.includes(o.status);
+  const cancellable = o.cancellable ?? CANCELLABLE_FROM.includes(o.status);
 
   const statusClass = {
     Placed: 'is-dark', Processing: 'is-dark', Shipped: 'is-dark',
