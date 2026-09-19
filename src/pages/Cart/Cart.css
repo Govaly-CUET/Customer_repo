@@ -1,0 +1,57 @@
+.cart-selectall { display: flex; align-items: center; gap: 11px; padding: 12px 16px; cursor: pointer; }
+
+.cart-grid { display: grid; grid-template-columns: 1fr 320px; gap: 16px; align-items: start; }
+
+.confirm-modal {
+  position: fixed;
+  z-index: 100;
+  left: 50%;
+  top: 50%;
+  width: min(430px, calc(100vw - 32px));
+  display: grid;
+  grid-template-columns: 42px 1fr 58px;
+  gap: 12px;
+  align-items: center;
+  padding: 20px;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border: 1px solid #f1dce5;
+  border-radius: 16px;
+  box-shadow: 0 22px 60px rgba(40, 17, 29, .2);
+}
+
+.confirm-icon {
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: #fff0f4;
+  color: var(--red);
+}
+
+.confirm-copy h3 { margin: 0; font-size: 16px; }
+
+.confirm-copy p { margin: 4px 0 0; color: var(--ink-2); font-size: 13px; line-height: 1.35; }
+
+.confirm-copy small { display: block; margin-top: 4px; color: var(--muted); font-size: 11px; }
+
+.confirm-product-image { width: 58px; height: 58px; object-fit: cover; border-radius: 10px; background: #f7f7f9; }
+
+.confirm-actions { grid-column: 1 / -1; display: flex; justify-content: flex-end; gap: 9px; margin-top: 4px; }
+
+.btn-danger { background: var(--red); color: #fff; border: 1px solid var(--red); }
+
+.btn-danger:hover { filter: brightness(.94); }
+
+@media (max-width: 520px) {
+  .confirm-modal { padding: 16px; }
+}
+
+/* ============ Checkout flow (Cart → Checkout → Payment → Thank You) ============ */
+.cart-totalbar { display: none; }
+
+.st-price-m { color: var(--ink); }
+
+.st-price-d { color: var(--ink); font-size: 14.5px; white-space: nowrap; }

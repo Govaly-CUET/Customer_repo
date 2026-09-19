@@ -1,0 +1,34 @@
+/* ============ Error pages (404 / 500 / Server Down) ============ */
+.err-page { min-height: calc(100vh - 190px); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 30px 16px 60px; }
+
+.err-code { font-size: 110px; font-weight: 800; color: var(--brand); line-height: .95; letter-spacing: -.02em; margin-top: -26px; }
+
+.err-500-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; justify-content: center; }
+
+.err-code-inline { margin-top: 0; font-size: 96px; }
+
+.err-msg { font-size: 16.5px; color: #2d2d35; margin: 18px 0 4px; }
+
+.err-find { font-size: 16.5px; font-weight: 700; color: var(--ink); margin: 18px 0 12px; }
+
+.brand-txt { color: var(--brand); }
+
+.err-search { display: flex; align-items: center; gap: 8px; width: min(560px, 92vw); background: #fff; border: 1px solid var(--line); border-radius: 26px; padding: 6px 6px 6px 16px; box-shadow: 0 3px 14px rgba(20,10,30,.05); }
+
+.err-search input { flex: 1; border: 0; outline: none; font-size: 14.5px; background: none; }
+
+.err-search button { border: 0; background: var(--brand); color: #fff; font-weight: 700; font-size: 13.5px; border-radius: 20px; padding: 9px 20px; cursor: pointer; }
+
+.err-search button:hover { background: var(--brand-600); }
+
+.sd-page { min-height: 100vh; background: #fff4f9; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; }
+
+.sd-page h1 { font-size: clamp(44px, 9vw, 84px); font-weight: 800; color: var(--brand); margin: 6px 0 4px; letter-spacing: -.01em; }
+
+.sd-page p { font-size: 16px; color: #3d3d46; margin: 0 0 26px; }
+
+.sd-contact { background: #f7941d; color: #fff; font-weight: 700; font-size: 14.5px; border-radius: 8px; padding: 11px 26px; text-decoration: none; }
+
+.sd-contact:hover { background: #e2840f; }
+
+.sd-code { margin-top: 26px; font-size: 12px; color: #b9b9c4; letter-spacing: .08em; text-transform: uppercase; }

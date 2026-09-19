@@ -1,0 +1,53 @@
+/* =========================================================
+   THEME & GLOBAL RESET
+   Design tokens (CSS variables) + base element resets shared
+   by the entire app. Imported once in main.jsx.
+   ========================================================= */
+
+/* ============ Govaly Design System (matched to govaly.com.bd) ============ */
+:root {
+  --brand: #e2136e;
+  --brand-600: #c01159;
+  --brand-700: #a00f4b;
+  --brand-50: #fff2f8;
+  --brand-100: #ffd2e6;
+  --ink: #191919;
+  --ink-2: #333333;
+  --muted: #7a7a85;
+  --line: #e7e7e7;
+  --bg: #ffffff;
+  --card: #ffffff;
+  --green: #0faf00;
+  --amber: #f5a623;
+  --red: #e02d2d;
+  --radius: 10px;
+  --shadow-sm: 0 1px 4px rgba(25, 25, 25, 0.07);
+  --shadow-md: 0 6px 24px rgba(25, 25, 25, 0.12);
+  --font-head: 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+}
+
+img { display: block; max-width: 100%; }
+
+a { color: inherit; text-decoration: none; }
+
+button { font-family: inherit; cursor: pointer; }
+
+input, select, textarea { font-family: inherit; font-size: 14px; }
+
+h1, h2, h3, h4 { font-family: var(--font-head); margin: 0; }
+
+.container { max-width: 1280px; margin: 0 auto; padding: 0 16px; }

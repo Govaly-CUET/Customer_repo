@@ -17,9 +17,12 @@ api.interceptors.response.use(
   (err) => {
     // The real backend issues one 7-day JWT and has no /auth/refresh endpoint —
     // there's nothing to silently renew, so an expired/invalid token just logs out.
-    if (err.response?.status === 401 && !String(err.config?.url || '').includes('/auth/')) {
+    const requestUrl = String(err.config?.url || '');
+    const isPasswordChange = requestUrl.includes('/customer/change-password');
+
+    if (err.response?.status === 401 && !requestUrl.includes('/auth/') && !isPasswordChange) {
       storage.remove('govaly_token');
-      window.dispatchEvent(new Event('govaly:logout'));
+      window.dispatchEvent(new CustomEvent('govaly:logout', { detail: { reason: 'session' } }));
     }
     throw err;
   }
