@@ -1,0 +1,16 @@
+.stepper { display: flex; justify-content: space-between; margin: 6px 2px 20px; }
+
+.step { position: relative; flex: 1; display: flex; flex-direction: column; align-items: center; }
+
+.step-track { position: absolute; top: 16px; left: calc(-50% + 22px); right: calc(50% + 22px); height: 4px; border-radius: 4px; background: #fbd3e5; }
+
+.step:first-child .step-track { display: none; }
+
+.step-dot {
+  width: 34px; height: 34px; border-radius: 50%; background: #fbd3e5; color: #b0567f;
+  display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; z-index: 1;
+}
+
+.step-dot.now { box-shadow: 0 0 0 5px rgba(226,19,110,.18); }
+
+.step-label { margin-top: 7px; font-size: 12.5px; color: #9a9aa5; }
