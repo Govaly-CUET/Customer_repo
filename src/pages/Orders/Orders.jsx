@@ -123,6 +123,7 @@ function OrderCard({ o, onChanged }) {
   const [cancelling, setCancelling] = useState(false);
 
   const imageFor = (image) => image && !image.includes('placeholder-') ? image : '/favicon.svg';
+  const productHref = (item) => `/product/${item.product?.slug || item.product?._id || item.product || ''}`;
 
   const delivered = o.status === 'Delivered';
   const cancellable = CANCELLABLE_FROM.includes(o.status);
@@ -166,11 +167,11 @@ function OrderCard({ o, onChanged }) {
         {o.items.map((it, ix) => (
           <div key={ix}>
             <div className="ocard-item">
-              <Link to={`/product/${it.product?.slug || ''}`}>
+              <Link to={productHref(it)}>
                 <img src={imageFor(it.image)} alt={it.name} onError={(event) => { event.currentTarget.src = '/favicon.svg'; }} />
               </Link>
               <div className="ocard-mid">
-                <Link to={`/product/${it.product?.slug || ''}`} className="ocard-name">{it.name}</Link>
+                <Link to={productHref(it)} className="ocard-name">{it.name}</Link>
                 <div className="ocard-chips">
                   <span className="ocard-chip">{[it.color && `Color: ${it.color}`, it.size && `Size: ${it.size}`].filter(Boolean).join(', ')}</span>
                   {it.seller?.shopName && <span className="ocard-seller"><Store size={11} /> {it.seller.shopName}</span>}
@@ -207,8 +208,8 @@ function OrderCard({ o, onChanged }) {
           <span className="ocard-total">Total: <b>৳{o.subtotal}</b></span>
         </div>
         <div className="ocard-btns">
-          <button className="obtn obtn-line" onClick={() => setTracking((v) => !v)}>{tracking ? 'Hide Tracking' : 'Track Order'}</button>
-          {delivered && <button className="obtn obtn-line" onClick={orderAgain}>Order Again</button>}
+          <button className="obtn obtn-track" onClick={() => setTracking((v) => !v)}>{tracking ? 'Hide Tracking' : 'Track Order'}</button>
+          {delivered && <button className="obtn obtn-again" onClick={orderAgain}>Order Again</button>}
           {cancellable && <button className="obtn obtn-danger" onClick={cancelOrder} disabled={cancelling}>{cancelling ? 'Cancelling…' : 'Cancel Order'}</button>}
         </div>
       </div>

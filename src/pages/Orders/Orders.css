@@ -53,6 +53,19 @@
 
 .obtn-line:hover { border-color: var(--brand); color: var(--brand); }
 
+.obtn-track,
+.obtn-again {
+  background: var(--brand);
+  color: #fff;
+  border: 1.5px solid var(--brand);
+}
+
+.obtn-track:hover,
+.obtn-again:hover {
+  background: var(--brand-600);
+  border-color: var(--brand-600);
+}
+
 .obtn-danger { background: #fff; color: #c0392b; border: 1.5px solid #f3c9c2; }
 
 .obtn-danger:hover { background: #fdecea; }
@@ -60,6 +73,8 @@
 .obtn-danger:disabled { opacity: .6; cursor: default; }
 
 .ocard-foot { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; padding-top: 12px; }
+
+.ocard-btns { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 
 .ostatus { font-size: 13.5px; font-weight: 700; }
 

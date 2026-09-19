@@ -1,10 +1,9 @@
 import { Link } from 'react-router-dom';
-import { Heart } from 'lucide-react';
+import { Heart, Trash2 } from 'lucide-react';
 import { useStore } from '../../context/StoreContext.jsx';
-import ProductCard from '../../components/ProductCard/ProductCard.jsx';
 
 export default function Wishlist() {
-  const { wishlist, user } = useStore();
+  const { wishlist, user, toggleWishlist, addToCart, toast } = useStore();
 
   return (
     <div className="container">
@@ -17,9 +16,27 @@ export default function Wishlist() {
         </div>
       ) : (
         <section className="section container" style={{ marginTop: 14 }}>
-          <div className="section-head"><h2>My Wishlist <span className="mut" style={{ fontSize: 14 }}>({wishlist.length})</span></h2></div>
-          <div className="grid">
-            {wishlist.map((p) => <ProductCard p={p} key={p._id} compact />)}
+          <div className="section-head">
+            <h2>My Wishlist <span className="mut" style={{ fontSize: 14 }}>({wishlist.length})</span></h2>
+          </div>
+          <div className="panel" style={{ padding: '4px 0' }}>
+            {wishlist.map((p) => (
+              <div className="wl-row" key={p._id}>
+                <Link to={`/product/${p.slug}`}>
+                  <img src={p.images?.[0]} alt={p.name} className="wl-thumb" />
+                </Link>
+                <Link to={`/product/${p.slug}`} className="wl-name">{p.name}</Link>
+                <div className="wl-price">
+                  <b>৳{p.price}</b>
+                </div>
+                <button className="trash" onClick={() => toggleWishlist(p)} aria-label="Remove">
+                  <Trash2 size={16} />
+                </button>
+                <button className="btn btn-primary btn-sm" onClick={() => { addToCart(p, null, 1, true); toast('Added to cart 🛍️', 'ok'); }}>
+                  Add to Cart
+                </button>
+              </div>
+            ))}
           </div>
         </section>
       )}

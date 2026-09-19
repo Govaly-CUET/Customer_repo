@@ -580,8 +580,6 @@ export function StoreProvider({ children }) {
     setUser(null);
     setCart([]);
     setWishlist([]);
-
-    toast('Logged out', 'ok');
   };
 
   // ===========================================================================

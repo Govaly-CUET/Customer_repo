@@ -1,5 +1,5 @@
 import './App.css';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 
 import BottomNav from '../components/BottomNav/BottomNav.jsx';
@@ -9,7 +9,6 @@ import { Toasts, RequireAuth } from '../components/Guards/Guards.jsx';
 
 import Home from '../pages/Home/Home.jsx';
 import Listing from '../pages/Listing/Listing.jsx';
-import CategoryPage from '../pages/CategoryPage/CategoryPage.jsx';
 import SellerPage from '../pages/SellerPage/SellerPage.jsx';
 import ProductDetail from '../pages/ProductDetail/ProductDetail.jsx';
 import Cart from '../pages/Cart/Cart.jsx';
@@ -62,7 +61,7 @@ function BackgroundRoute({ path }) {
   if (path === '/payment') return <RequireAuth><Payment /></RequireAuth>;
   if (path === '/profile' || path.startsWith('/profile/')) return <RequireAuth><Profile /></RequireAuth>;
   if (path.startsWith('/product/')) return <ProductDetail />;
-  if (path.startsWith('/category/')) return <CategoryPage />;
+  if (path.startsWith('/category/')) return <Listing />;
   if (path.startsWith('/seller/')) return <SellerPage />;
   if (path.startsWith('/products')) return <Listing />;
   if (path.startsWith('/order-success/')) return <RequireAuth><OrderSuccess /></RequireAuth>;
@@ -134,7 +133,7 @@ export default function App() {
 
             <Route
               path="/category/:slug"
-              element={<CategoryPage />}
+              element={<Listing />}
             />
 
             <Route
@@ -186,7 +185,10 @@ export default function App() {
               }
             />
 
-            <Route path="/wishlist" element={<Wishlist />} />
+            <Route
+              path="/wishlist"
+              element={<Navigate to="/profile/wishlist" replace />}
+            />
 
             {/*
               Keep the URL routes for the existing modal-based auth flow.

@@ -97,8 +97,8 @@ export default function OrderSuccess() {
       )}
 
       <div className="row" style={{ gap: 10, marginTop: 4 }}>
-        <Link to="/orders" className="btn btn-outline btn-sm">Track Order</Link>
-        <Link to="/products" className="ty-back">Back to shopping</Link>
+        <Link to="/orders" className="ty-action">Track Order</Link>
+        <Link to="/products" className="ty-action">Back to shopping</Link>
       </div>
     </div>
   );

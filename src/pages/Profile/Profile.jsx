@@ -201,7 +201,8 @@ function AddressesSection() {
 }
 
 function SettingsSection() {
-  const { toast, changePassword } = useStore();
+  const { toast, setPassword, changePassword, user } = useStore();
+  const hasPassword = Boolean(user?.hasPassword);
   const [openPw, setOpenPw] = useState(false);
   const [notif, setNotif] = useState(false);
   const [pw, setPw] = useState({ current: '', next: '', confirm: '' });
@@ -240,31 +241,43 @@ function SettingsSection() {
         <button className="pf-rowbtn" onClick={() => setOpenPw(!openPw)} style={{ width: '100%' }}>
           <span className="help-ic" style={{ background: '#fde7f1' }}><Lock size={18} color="var(--brand)" /></span>
           <span style={{ flex: 1, textAlign: 'left' }}>
-            <b style={{ fontSize: 14.5, display: 'block' }}>Change Password</b>
-            <span className="mut" style={{ fontSize: 12.5 }}>Update your account password for better security</span>
+            <b style={{ fontSize: 14.5, display: 'block' }}>{hasPassword ? 'Change Password' : 'Set Password'}</b>
+            <span className="mut" style={{ fontSize: 12.5 }}>
+              {hasPassword ? 'Update your account password for better security' : 'Create a password for your account'}
+            </span>
           </span>
           <ChevronRight size={17} className={openPw ? 'rot90' : ''} />
         </button>
         {openPw && (
           <div style={{ padding: '4px 18px 18px' }}>
             <div className="form-grid">
-              <div className="field"><label>Current password</label>
-                <input type="password" value={pw.current} onChange={(e) => setPw({ ...pw, current: e.target.value })} /></div>
-              <div className="field"><label>New password (min 6)</label>
+              {hasPassword && (
+                <div className="field"><label>Current password</label>
+                  <input type="password" value={pw.current} onChange={(e) => setPw({ ...pw, current: e.target.value })} /></div>
+              )}
+              <div className="field"><label>{hasPassword ? 'New password (min 6)' : 'Password (min 6)'}</label>
                 <input type="password" value={pw.next} onChange={(e) => setPw({ ...pw, next: e.target.value })} /></div>
               <div className="field"><label>Confirm new password</label>
                 <input type="password" value={pw.confirm} onChange={(e) => setPw({ ...pw, confirm: e.target.value })} /></div>
             </div>
             <button
               className="btn btn-primary btn-sm" style={{ marginTop: 10 }}
-              disabled={busy || !pw.current || !pw.next}
+              disabled={busy || (hasPassword && !pw.current) || !pw.next || !pw.confirm}
               onClick={async () => {
                 if (pw.next !== pw.confirm) return toast('New passwords do not match', 'err');
                 setBusy(true);
-                try { await changePassword(pw.current, pw.next, pw.confirm); setPw({ current: '', next: '', confirm: '' }); setOpenPw(false); }
+                try {
+                  if (hasPassword) {
+                    await changePassword(pw.current, pw.next, pw.confirm);
+                  } else {
+                    await setPassword(pw.next, pw.confirm);
+                  }
+                  setPw({ current: '', next: '', confirm: '' });
+                  setOpenPw(false);
+                }
                 catch (e) { toast(errMsg(e), 'err'); } finally { setBusy(false); }
               }}
-            >{busy ? 'Updating…' : 'Update Password'}</button>
+            >{busy ? (hasPassword ? 'Updating…' : 'Saving…') : (hasPassword ? 'Update Password' : 'Save Password')}</button>
           </div>
         )}
       </div>

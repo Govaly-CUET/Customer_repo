@@ -16,33 +16,44 @@
   padding-top: 28px;
 }
 
-
 /* =========================================================
    SHOP BY CATEGORY
    ========================================================= */
 
-.home-page .sec-title {
-  margin: 0;
-}
-
-
-/* Category wrapper */
-
 .home-page .cat-scroll {
   display: flex;
-  gap: 18px;
+  align-items: flex-start;
+  gap: 14px;
+
   width: 100%;
+  box-sizing: border-box;
+
+  padding: 14px 0 12px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+
+.home-page .cat-scroll::-webkit-scrollbar {
+  display: none;
 }
 
 
-/* Category item */
+/* =========================================================
+   CATEGORY ITEM
+   ========================================================= */
 
 .home-page .cat-item {
+  flex: 0 0 calc((100% - 70px) / 6);
+
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  min-width: 110px;
+  min-width: 0;
 
   color: inherit;
   text-decoration: none;
@@ -58,7 +69,9 @@
 }
 
 
-/* Category image */
+/* =========================================================
+   CATEGORY IMAGE
+   ========================================================= */
 
 .home-page .cat-imgwrap {
   width: 92px;
@@ -71,7 +84,6 @@
   overflow: hidden;
 
   border-radius: 50%;
-
   background: #f8f8f8;
 
   margin-bottom: 8px;
@@ -82,20 +94,32 @@
   height: 100%;
 
   object-fit: cover;
+
+  transition: transform 0.2s ease;
+}
+
+.home-page .cat-item:hover .cat-imgwrap img {
+  transform: scale(1.05);
 }
 
 
-/* Category name */
+/* =========================================================
+   CATEGORY NAME
+   ========================================================= */
 
 .home-page .cat-item > span:last-child {
+  width: 100%;
+
   text-align: center;
 
   font-size: 14px;
   font-weight: 600;
-
   line-height: 1.3;
-}
 
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 /* =========================================================
    PRODUCT TABS
@@ -112,6 +136,17 @@
   padding: 4px 0 14px;
 
   scrollbar-width: none;
+}
+
+@media (min-width: 768px) {
+  .home-page .tabs {
+    position: sticky;
+    padding-top: 18px;
+    top: 62px;
+    gap: 70px;
+    z-index: 40;
+    background: transparent;
+  }
 }
 
 .home-page .tabs::-webkit-scrollbar {
@@ -172,11 +207,10 @@
 
 .home-page .grid {
   display: grid;
-  grid-template-columns: repeat(6, 205px);
-  column-gap: 10px;
-  row-gap: 16px;
-  width: max-content;
-  max-width: 100%;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 15px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 

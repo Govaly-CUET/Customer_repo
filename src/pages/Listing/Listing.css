@@ -1,35 +1,896 @@
-/* ---------- Listing ---------- */
-.listing { display: grid; grid-template-columns: 250px 1fr; gap: 14px; margin-top: 14px; align-items: start; }
+/* =========================================================
+   GOVALY LISTING PAGE
+   Desktop / PC
+========================================================= */
 
-.filters { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow-sm); position: sticky; top: 76px; max-height: calc(100vh - 92px); overflow: auto; padding-bottom: 8px; }
+.listing-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #fff2f8;
+  color: #222;
+}
 
-.filters h5 { margin: 0; padding: 14px 16px 10px; font-size: 11px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--line); }
+.listing-page a {
+  text-decoration: none;
+}
 
-.fgroup { padding: 10px 16px; border-bottom: 1px solid var(--line); }
+/* =========================================================
+   LOADING / EMPTY
+========================================================= */
 
-.fgroup:last-child { border-bottom: 0; }
+.listing-loading {
+  min-height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-.fgroup h6 { margin: 0 0 8px; font-size: 12.5px; color: var(--ink); display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+.category-loading {
+  min-height: 420px;
+}
 
-.fgroup label { display: flex; align-items: center; gap: 8px; padding: 4.5px 0; font-size: 13px; color: var(--ink-2); cursor: pointer; }
+.listing-empty {
+  width: min(600px, calc(100% - 80px));
+  margin: 70px auto;
+  padding: 60px 30px;
+  text-align: center;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 8px 30px rgba(226, 19, 110, 0.08);
+}
 
-.fgroup label:hover { color: var(--brand); }
+.empty-icon {
+  font-size: 46px;
+  margin-bottom: 12px;
+}
 
-.fgroup input[type='checkbox'], .fgroup input[type='radio'] { accent-color: var(--brand); width: 15px; height: 15px; }
+.listing-empty h2 {
+  margin: 0 0 8px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #222;
+}
 
-.listing-main { min-width: 0; }
+.listing-empty p {
+  margin: 0 0 20px;
+  color: #777;
+  font-size: 14px;
+}
 
-.listing-top { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow-sm); padding: 12px 18px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.empty-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 20px;
+  border-radius: 6px;
+  background: #e2136e;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+}
 
-.listing-top select { border: 1px solid var(--line); border-radius: 999px; padding: 8px 12px; background: #fff; font-weight: 600; color: var(--ink-2); outline: none; }
 
-.filter-toggle { display: none; }
+/* =========================================================
+   CATEGORY PAGE
+========================================================= */
 
-/* ---------- Pagination ---------- */
-.pager { display: flex; gap: 6px; justify-content: center; padding: 10px 0 24px; }
+.category-page {
+  width: 100%;
+  padding-bottom: 50px;
+}
 
-.pager button { min-width: 36px; height: 36px; border-radius: 999px; border: 1px solid var(--line); background: #fff; font-weight: 700; color: var(--ink-2); }
 
-.pager button.on { background: var(--brand); border-color: var(--brand); color: #fff; }
+/* =========================================================
+   CATEGORY BANNER
+   Govaly desktop: 350px
+========================================================= */
 
-.pager button:disabled { opacity: 0.4; }
+.category-banner {
+  width: 100%;
+  height: 350px;
+  overflow: hidden;
+  border-radius: 0 0 10px 10px;
+  background: #f5f5f5;
+}
+
+.category-banner img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+
+/* =========================================================
+   CATEGORY TITLE
+========================================================= */
+
+.category-title-bar {
+  position: sticky;
+  top: 72px;
+  z-index: 20;
+
+  width: auto;
+  margin: -28px 40px 0;
+
+  background: #fff;
+  border-radius: 6px;
+
+  box-shadow:
+    0 2px 4px rgba(226, 19, 110, 0.10);
+}
+
+.category-title-inner {
+  padding: 14px 20px 15px;
+}
+
+.category-title-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.category-title-breadcrumb {
+  display: none;
+}
+
+.category-title-inner h1 {
+  margin: 0;
+  color: #e2136e;
+  font-size: 24px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.category-count {
+  display: none;
+}
+
+
+/* =========================================================
+   CATEGORY SECTION
+========================================================= */
+
+.category-section {
+  width: auto;
+  margin: 30px 40px 0;
+}
+
+.category-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.category-section-header h2 {
+  margin: 0;
+  color: #222;
+  font-size: 20px;
+  line-height: 1.25;
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   TOP RATED / TOP SOLD
+========================================================= */
+
+.category-carousel {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 242px;
+
+  gap: 8px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  padding: 3px 2px 10px;
+
+  scroll-behavior: smooth;
+
+  scrollbar-width: thin;
+  scrollbar-color: #e8b1cb transparent;
+}
+
+.category-carousel::-webkit-scrollbar {
+  height: 5px;
+}
+
+.category-carousel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.category-carousel::-webkit-scrollbar-thumb {
+  background: #e8b1cb;
+  border-radius: 999px;
+}
+
+
+/* =========================================================
+   CATEGORY PRODUCT CARD
+========================================================= */
+
+.category-product-card {
+  width: 242px;
+  min-width: 242px;
+
+  background: #fff;
+  border-radius: 8px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 4px 14px rgba(226, 19, 110, 0.07);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.category-product-card:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 8px 20px rgba(226, 19, 110, 0.12);
+}
+
+
+/* =========================================================
+   FORCE EXISTING PRODUCT CARD TO FIT
+========================================================= */
+
+.category-product-card > *,
+.for-you-card > * {
+  width: 100%;
+}
+
+.category-product-card .product-card,
+.for-you-card .product-card {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 8px;
+  box-shadow: none;
+  background: #fff;
+}
+
+.category-product-card img,
+.for-you-card img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+
+  transition: transform 0.25s ease;
+}
+
+.category-product-card:hover img,
+.for-you-card:hover img {
+  transform: scale(1.05);
+}
+
+
+/* =========================================================
+   FOR YOU
+========================================================= */
+
+.for-you-section {
+  margin-top: 40px;
+}
+
+.for-you-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(6, minmax(0, 1fr));
+
+  gap: 8px;
+
+  width: 100%;
+}
+
+.for-you-card {
+  min-width: 0;
+
+  background: #fff;
+  border-radius: 8px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 4px 14px rgba(226, 19, 110, 0.06);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.for-you-card:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 8px 20px rgba(226, 19, 110, 0.11);
+}
+
+
+/* =========================================================
+   SEARCH PAGE
+========================================================= */
+
+.search-page {
+  width: auto;
+  margin: 0 40px;
+  padding: 30px 0 50px;
+}
+
+
+/* =========================================================
+   SEARCH HEADER
+========================================================= */
+
+.search-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 30px;
+
+  margin-bottom: 22px;
+}
+
+.search-heading-left {
+  min-width: 0;
+}
+
+.search-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  margin-bottom: 8px;
+
+  color: #888;
+  font-size: 12px;
+}
+
+.search-breadcrumb a {
+  color: #777;
+}
+
+.search-breadcrumb a:hover {
+  color: #e2136e;
+}
+
+.search-breadcrumb strong {
+  color: #444;
+}
+
+.search-heading h1 {
+  margin: 0;
+
+  color: #222;
+
+  font-size: 25px;
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+.search-heading h1 span {
+  color: #e2136e;
+}
+
+.search-heading p {
+  margin: 6px 0 0;
+
+  color: #888;
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   SEARCH SORT
+========================================================= */
+
+.search-sort {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  flex-shrink: 0;
+}
+
+.search-sort label {
+  color: #777;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.search-sort select {
+  min-width: 190px;
+
+  padding: 10px 14px;
+
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+
+  background: #fff;
+
+  color: #333;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  outline: none;
+  cursor: pointer;
+}
+
+.search-sort select:focus {
+  border-color: #e2136e;
+}
+
+
+/* =========================================================
+   SEARCH LAYOUT
+========================================================= */
+
+.search-layout {
+  display: grid;
+
+  grid-template-columns:
+    245px minmax(0, 1fr);
+
+  gap: 18px;
+
+  align-items: start;
+}
+
+
+/* =========================================================
+   SEARCH FILTERS
+========================================================= */
+
+.search-filters {
+  position: sticky;
+  top: 80px;
+
+  max-height:
+    calc(100vh - 100px);
+
+  overflow-y: auto;
+
+  background: #fff;
+
+  border-radius: 8px;
+
+  box-shadow:
+    0 5px 22px rgba(0, 0, 0, 0.06);
+
+  scrollbar-width: thin;
+}
+
+.search-filters::-webkit-scrollbar {
+  width: 5px;
+}
+
+.search-filters::-webkit-scrollbar-thumb {
+  background: #ddd;
+  border-radius: 999px;
+}
+
+
+/* =========================================================
+   FILTER HEADER
+========================================================= */
+
+.filter-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 16px;
+
+  border-bottom: 1px solid #eee;
+}
+
+.filter-header h3 {
+  margin: 0;
+
+  color: #222;
+
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.filter-header button {
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #e2136e;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   FILTER GROUP
+========================================================= */
+
+.filter-group {
+  padding: 15px 16px;
+
+  border-bottom: 1px solid #eee;
+}
+
+.filter-group:last-child {
+  border-bottom: 0;
+}
+
+.filter-group h4 {
+  margin: 0 0 11px;
+
+  color: #222;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   FILTER CHIPS
+========================================================= */
+
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+
+  padding: 6px 8px;
+
+  border: 1px solid #f2c0d7;
+  border-radius: 999px;
+
+  background: #fff4f9;
+
+  color: #e2136e;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   CATEGORY FILTER
+========================================================= */
+
+.filter-parent {
+  margin-bottom: 9px;
+}
+
+.filter-parent:last-child {
+  margin-bottom: 0;
+}
+
+.filter-parent-link {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #333;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.filter-parent-link:hover {
+  color: #e2136e;
+}
+
+.filter-children {
+  padding-left: 9px;
+
+  border-left: 2px solid #f5c8dc;
+}
+
+.filter-checkbox {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 4px 0;
+
+  color: #777;
+
+  font-size: 12px;
+
+  cursor: pointer;
+}
+
+.filter-checkbox:hover {
+  color: #e2136e;
+}
+
+.filter-checkbox input {
+  width: 14px;
+  height: 14px;
+
+  margin: 0;
+
+  accent-color: #e2136e;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   PRICE
+========================================================= */
+
+.filter-radio {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 5px 0;
+
+  color: #777;
+
+  font-size: 12px;
+
+  cursor: pointer;
+}
+
+.filter-radio:hover {
+  color: #e2136e;
+}
+
+.filter-radio input {
+  width: 14px;
+  height: 14px;
+
+  margin: 0;
+
+  accent-color: #e2136e;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   SIZE
+========================================================= */
+
+.size-filter-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 6px;
+}
+
+.size-option {
+  position: relative;
+
+  cursor: pointer;
+}
+
+.size-option input {
+  position: absolute;
+
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+.size-option span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 31px;
+
+  padding: 4px;
+
+  border: 1px solid #e5e5e5;
+  border-radius: 6px;
+
+  background: #fff;
+
+  color: #666;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.size-option:hover span {
+  border-color: #e2136e;
+  color: #e2136e;
+}
+
+.size-option.active span {
+  border-color: #e2136e;
+  background: #fff0f7;
+  color: #e2136e;
+}
+
+
+/* =========================================================
+   SEARCH PRODUCTS
+========================================================= */
+
+.search-products {
+  min-width: 0;
+}
+
+.search-product-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(5, minmax(0, 1fr));
+
+  gap: 12px;
+}
+
+
+/* =========================================================
+   PAGINATION
+========================================================= */
+
+.pager {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+
+  padding: 28px 0 10px;
+}
+
+.pager button {
+  width: 36px;
+  height: 36px;
+
+  padding: 0;
+
+  border: 1px solid #e3e3e3;
+  border-radius: 50%;
+
+  background: #fff;
+
+  color: #666;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.pager button:hover:not(:disabled) {
+  border-color: #e2136e;
+  color: #e2136e;
+}
+
+.pager button.on {
+  border-color: #e2136e;
+  background: #e2136e;
+  color: #fff;
+}
+
+.pager button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+
+/* =========================================================
+   DESKTOP SMALL
+========================================================= */
+
+@media (max-width: 1250px) {
+
+  .category-title-bar,
+  .category-section {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .search-page {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .category-banner {
+    height: 320px;
+  }
+
+  .for-you-grid {
+    grid-template-columns:
+      repeat(5, minmax(0, 1fr));
+  }
+
+  .search-product-grid {
+    grid-template-columns:
+      repeat(4, minmax(0, 1fr));
+  }
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+========================================================= */
+
+@media (min-width: 1500px) {
+
+  .category-banner {
+    height: 350px;
+  }
+
+  .category-title-bar,
+  .category-section {
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+
+  .for-you-grid {
+    grid-template-columns:
+      repeat(6, minmax(0, 1fr));
+  }
+
+}
+
+@media (max-width: 640px) {
+
+  .category-title-content {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .category-sort {
+    width: 100%;
+  }
+
+  .category-sort select {
+    flex: 1;
+    min-width: 0;
+  }
+
+}
+
+.category-sort {
+  margin-left: auto;
+}
+
+.for-you-grid .product-card {
+  min-width: 0;
+}

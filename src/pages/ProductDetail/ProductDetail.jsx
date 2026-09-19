@@ -334,29 +334,7 @@ export default function ProductDetail() {
           BREADCRUMB
       ================================================= */}
 
-      <div className="container">
-        <div className="pdp-breadcrumb">
-
-          <Link to="/">
-            Home
-          </Link>
-
-          <ChevronRight size={13} />
-
-          <Link
-            to={`/category/${p.category}`}
-          >
-            {categoryName}
-          </Link>
-
-          <ChevronRight size={13} />
-
-          <span>
-            {p.name}
-          </span>
-
-        </div>
-      </div>
+    
 
 
       {/* =================================================

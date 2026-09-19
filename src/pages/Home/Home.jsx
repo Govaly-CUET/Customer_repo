@@ -3,11 +3,16 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import api from '../../api.js';
-import { flattenCategories, normalizeProductList } from '../../adapters.js';
+import {
+  flattenCategories,
+  normalizeProductList,
+} from '../../adapters.js';
+
 import ProductCard from '../../components/ProductCard/ProductCard.jsx';
 import { Spinner } from '../../components/ui/ui.jsx';
 import HeroBanner from '../../components/HeroBanner/HeroBanner.jsx';
 import CategoryCarousel from '../../components/CategoryCarousel/CategoryCarousel.jsx';
+import ServiceBenefits from '../../components/ServiceBenefits/ServiceBenefits.jsx';
 
 // IMPORTANT:
 // Use the SAME useStore import/path that your existing Header.jsx uses.
@@ -116,10 +121,16 @@ function ProductTabs({ parents }) {
   return (
     <section
       className="section container home-product-tabs"
-      style={{ paddingBottom: 6, backgroundColor: "transparent"}}
+      style={{
+        paddingBottom: 6,
+        backgroundColor: 'transparent',
+      }}
     >
 
-      {/* Product Tabs */}
+      {/* =================================================
+          PRODUCT TABS
+          ================================================= */}
+
       <div className="tabs">
 
         {tabs.map((t, index) => (
@@ -127,9 +138,7 @@ function ProductTabs({ parents }) {
             key={`${t.key || 'all'}-${index}`}
             type="button"
             className={`tab${
-              tab === t.key
-                ? ' on'
-                : ''
+              tab === t.key ? ' on' : ''
             }`}
             onClick={() => setTab(t.key)}
           >
@@ -140,7 +149,10 @@ function ProductTabs({ parents }) {
       </div>
 
 
-      {/* Products */}
+      {/* =================================================
+          PRODUCTS
+          ================================================= */}
+
       {loading ? (
         <Spinner />
       ) : (
@@ -158,7 +170,10 @@ function ProductTabs({ parents }) {
       )}
 
 
-      {/* View All */}
+      {/* =================================================
+          VIEW ALL
+          ================================================= */}
+
       <div
         className="center"
         style={{
@@ -192,6 +207,9 @@ export default function Home() {
 
   const [cats, setCats] = useState(null);
 
+  // NEW: Media state
+  const [media, setMedia] = useState([]);
+
 
   /* =======================================================
      LOAD CATEGORIES
@@ -210,6 +228,26 @@ export default function Home() {
 
       .catch(() => {
         setCats([]);
+      });
+
+  }, []);
+
+
+  /* =======================================================
+     LOAD CUSTOMER MEDIA
+     ======================================================= */
+
+  useEffect(() => {
+
+    api
+      .get('/customer/media')
+
+      .then(({ data }) => {
+        setMedia(data.data || []);
+      })
+
+      .catch(() => {
+        setMedia([]);
       });
 
   }, []);
@@ -246,8 +284,6 @@ export default function Home() {
 
       {/* =================================================
           HERO BANNER
-          927 × 370
-          Login / Sign Up shown only for guests
           ================================================= */}
 
       <HeroBanner user={user} />
@@ -257,11 +293,19 @@ export default function Home() {
           SHOP BY CATEGORY
           ================================================= */}
 
-      {/* <ShopByCategory
-        subs={subs}
-      /> */}
+      <CategoryCarousel
+        categories={subs}
+      />
 
-      <CategoryCarousel categories={subs} />
+
+      {/* =================================================
+          SERVICE BENEFITS
+          Images come from backend / Cloudinary
+          ================================================= */}
+
+      <ServiceBenefits
+        media={media}
+      />
 
 
       {/* =================================================
