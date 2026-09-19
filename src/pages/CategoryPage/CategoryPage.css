@@ -1,0 +1,3 @@
+.view-all { color: var(--brand); font-weight: 700; font-size: 13px; }
+
+.view-all:hover { text-decoration: underline; }

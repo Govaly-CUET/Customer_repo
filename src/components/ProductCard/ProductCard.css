@@ -1,0 +1,209 @@
+/* ================= PRODUCT CARD ================= */
+
+.pcard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  width: 205px;
+  background: #fff;
+
+  border: 1px solid #f1edf0;
+  border-radius: 10px;
+  overflow: hidden;
+
+  box-shadow: 0 3px 12px rgba(226, 19, 110, 0.08);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.pcard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(226, 19, 110, 0.12);
+}
+
+
+/* ================= IMAGE ================= */
+
+.pcard-media {
+  position: relative;
+
+  width: 205px;
+  height: 205px;
+
+  overflow: hidden;
+  background: #fff;
+}
+
+.pcard-image-link {
+  display: block;
+
+  width: 205px;
+  height: 205px;
+}
+
+.pcard-media img {
+  display: block;
+
+  width: 205px;
+  height: 205px;
+
+  object-fit: cover;
+  object-position: center center;
+
+  transition: transform 0.3s ease;
+  will-change: transform;
+}
+
+.pcard:hover .pcard-media img {
+  transform: scale(1.05);
+}
+
+
+/* ================= IMAGE DOTS ================= */
+
+.pcard-dots {
+  position: absolute;
+
+  left: 50%;
+  bottom: 7px;
+
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+  gap: 3px;
+
+  padding: 3px 5px;
+
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.7);
+
+  z-index: 3;
+}
+
+.pcard-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+  background: #ccc;
+}
+
+.pcard-dot.active {
+  background: #e2136e;
+}
+
+
+/* ================= HEART ================= */
+
+.pcard-heart {
+  position: absolute;
+
+  right: 7px;
+  bottom: 5px;
+
+  z-index: 4;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+
+  padding: 0;
+  border: none;
+  background: transparent;
+
+  color: #e2136e;
+
+  cursor: pointer;
+
+  transition: transform 0.18s ease;
+}
+
+.pcard-heart:hover {
+  transform: scale(1.08);
+}
+
+.pcard-heart.active {
+  color: #e2136e;
+}
+
+
+/* ================= PRODUCT BODY ================= */
+
+.pcard-body {
+  display: flex;
+  flex-direction: column;
+
+  width: 205px;
+
+  min-height: 76px;
+
+  padding: 7px 9px 10px;
+
+  background: #fff;
+
+  box-sizing: border-box;
+}
+
+
+/* ================= PRODUCT NAME ================= */
+
+.pcard-name {
+  display: -webkit-box;
+
+  overflow: hidden;
+
+  color: #171717;
+
+  font-size: 16px;
+  font-weight: 500;
+
+  line-height: 1.3;
+
+  text-decoration: none;
+
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+
+/* ================= BASE PRICE ================= */
+
+.pcard-price {
+  display: flex;
+  align-items: center;
+
+  margin-top: 6px;
+}
+
+.pcard-current-price {
+  color: #e2136e;
+
+  font-size: 18px;
+  font-weight: 600;
+
+  line-height: 1.2;
+}
+
+
+/* ================= GRID ================= */
+
+.pgrid .pcard {
+  width: 205px;
+}
+
+.pgrid .pcard-media {
+  width: 205px;
+  height: 205px;
+}
+
+.pgrid .pcard-media img {
+  width: 205px;
+  height: 205px;
+}

@@ -19,7 +19,7 @@ api.interceptors.response.use(
     // there's nothing to silently renew, so an expired/invalid token just logs out.
     if (err.response?.status === 401 && !String(err.config?.url || '').includes('/auth/')) {
       storage.remove('govaly_token');
-      window.dispatchEvent(new Event('govaly:logout'));
+      window.dispatchEvent(new CustomEvent('govaly:logout', { detail: { reason: 'session' } }));
     }
     throw err;
   }

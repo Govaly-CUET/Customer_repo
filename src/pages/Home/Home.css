@@ -1,0 +1,292 @@
+/* =========================================================
+   HOME PAGE
+   ========================================================= */
+
+.home-page {
+  width: 100%;
+  background: #fff2f8;
+}
+
+
+/* =========================================================
+   HERO SPACING
+   ========================================================= */
+
+.home-hero + .section {
+  padding-top: 28px;
+}
+
+
+/* =========================================================
+   SHOP BY CATEGORY
+   ========================================================= */
+
+.home-page .sec-title {
+  margin: 0;
+}
+
+
+/* Category wrapper */
+
+.home-page .cat-scroll {
+  display: flex;
+  gap: 18px;
+  width: 100%;
+}
+
+
+/* Category item */
+
+.home-page .cat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  min-width: 110px;
+
+  color: inherit;
+  text-decoration: none;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.home-page .cat-item:hover {
+  transform: translateY(-3px);
+  opacity: 0.9;
+}
+
+
+/* Category image */
+
+.home-page .cat-imgwrap {
+  width: 92px;
+  height: 92px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  border-radius: 50%;
+
+  background: #f8f8f8;
+
+  margin-bottom: 8px;
+}
+
+.home-page .cat-imgwrap img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+
+/* Category name */
+
+.home-page .cat-item > span:last-child {
+  text-align: center;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  line-height: 1.3;
+}
+
+
+/* =========================================================
+   PRODUCT TABS
+   ========================================================= */
+
+.home-page .tabs {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  overflow-x: auto;
+
+  padding: 4px 0 14px;
+
+  scrollbar-width: none;
+}
+
+.home-page .tabs::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* Tab */
+
+.home-page .tab {
+  flex-shrink: 0;
+
+  border: 1px solid #e5e5e5;
+
+  background: #ffffff;
+
+  color: #444444;
+
+  border-radius: 999px;
+
+  padding: 9px 18px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+/* Tab hover */
+
+.home-page .tab:hover {
+  border-color: #e2136e;
+  color: #e2136e;
+}
+
+
+/* Active tab */
+
+.home-page .tab.on {
+  background: #e2136e;
+
+  border-color: #e2136e;
+
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   PRODUCT GRID
+   ========================================================= */
+
+.home-page .grid {
+  display: grid;
+  grid-template-columns: repeat(6, 205px);
+  column-gap: 10px;
+  row-gap: 16px;
+  width: max-content;
+  max-width: 100%;
+}
+
+
+/* =========================================================
+   CENTER
+   ========================================================= */
+
+.home-page .center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  .home-hero + .section {
+    padding-top: 22px;
+  }
+
+  .home-page .cat-scroll {
+    gap: 14px;
+  }
+
+  .home-page .cat-item {
+    min-width: 90px;
+  }
+
+  .home-page .cat-imgwrap {
+    width: 76px;
+    height: 76px;
+  }
+
+  .home-page .cat-item > span:last-child {
+    font-size: 13px;
+  }
+
+  .home-page .tab {
+    padding: 8px 15px;
+    font-size: 13px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .home-hero + .section {
+    padding-top: 18px;
+  }
+
+  .home-page .cat-scroll {
+    gap: 10px;
+  }
+
+  .home-page .cat-item {
+    min-width: 78px;
+  }
+
+  .home-page .cat-imgwrap {
+    width: 64px;
+    height: 64px;
+  }
+
+  .home-page .cat-item > span:last-child {
+    font-size: 12px;
+  }
+
+  .home-page .tabs {
+    gap: 7px;
+  }
+
+  .home-page .tab {
+    padding: 7px 13px;
+    font-size: 12px;
+  }
+}
+
+/* =========================================================
+   Additional rules migrated from the old shared styles.css
+   ========================================================= */
+
+.cat-scroll { display: grid; grid-auto-flow: column; grid-auto-columns: calc(100% / 9); gap: 12px; overflow-x: auto; padding: 14px 8px 12px; scrollbar-width: none; }
+
+.cat-scroll::-webkit-scrollbar { display: none; }
+
+.cat-item { display: flex; flex-direction: column; gap: 7px; text-align: center; }
+
+.cat-item .cat-imgwrap { background: #e3f1fa; border-radius: 12px; overflow: hidden; border: 1px solid #d5e9f5; }
+
+.cat-item img { width: 100%; aspect-ratio: 1; object-fit: cover; transition: transform 0.2s ease-in-out; background: #f6f6f6; }
+
+.cat-item:hover img { transform: scale(1.05); }
+
+.cat-item span { font-size: 12px; font-weight: 500; color: var(--ink-2); white-space: nowrap; overflow: hidden; max-width: 100%; text-overflow: ellipsis; }
+
+@media (max-width: 980px) { .cat-scroll { grid-auto-columns: calc(100% / 4.5); } }
+
+@media (max-width: 560px) { .cat-scroll { grid-auto-columns: calc(100% / 3.2); gap: 8px; } }
+
+.center { text-align: center; }
+
+/* Keep the product selector visually separate from the category carousel. */
+.home-product-tabs { margin-top: 28px; }
+
+.flash-head .sec-title { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(90deg, var(--brand-600), var(--brand)); color: #fff; border-radius: 10px; padding: 8px 16px; }
