@@ -643,6 +643,94 @@
    PRICE
 ========================================================= */
 
+.price-range-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  color: #5f6875;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.price-range-label strong {
+  color: #5f6875;
+  font-weight: 500;
+}
+
+.price-range {
+  position: relative;
+  height: 24px;
+  margin: 0 5px 7px;
+}
+
+.price-range-track {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  left: 0;
+  height: 5px;
+  border-radius: 999px;
+  background: #e2136e;
+}
+
+.price-range-input {
+  position: absolute;
+  top: 0;
+  left: -5px;
+  width: calc(100% + 10px);
+  height: 24px;
+  margin: 0;
+  appearance: none;
+  pointer-events: none;
+  background: transparent;
+}
+
+.price-range-input::-webkit-slider-runnable-track {
+  height: 5px;
+  background: transparent;
+}
+
+.price-range-input::-moz-range-track {
+  height: 5px;
+  background: transparent;
+}
+
+.price-range-input::-webkit-slider-thumb {
+  width: 18px;
+  height: 18px;
+  margin-top: -6px;
+  appearance: none;
+  pointer-events: auto;
+  border: 0;
+  border-radius: 50%;
+  background: #e2136e;
+  cursor: pointer;
+}
+
+.price-range-input::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  pointer-events: auto;
+  border: 0;
+  border-radius: 50%;
+  background: #e2136e;
+  cursor: pointer;
+}
+
+.price-range-max {
+  z-index: 2;
+}
+
+.price-clear {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #e2136e;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
 .filter-radio {
   display: flex;
   align-items: center;
@@ -675,70 +763,6 @@
 
 
 /* =========================================================
-   SIZE
-========================================================= */
-
-.size-filter-grid {
-  display: grid;
-
-  grid-template-columns:
-    repeat(3, 1fr);
-
-  gap: 6px;
-}
-
-.size-option {
-  position: relative;
-
-  cursor: pointer;
-}
-
-.size-option input {
-  position: absolute;
-
-  opacity: 0;
-
-  pointer-events: none;
-}
-
-.size-option span {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  min-height: 31px;
-
-  padding: 4px;
-
-  border: 1px solid #e5e5e5;
-  border-radius: 6px;
-
-  background: #fff;
-
-  color: #666;
-
-  font-size: 11px;
-  font-weight: 600;
-
-  transition:
-    background 0.15s ease,
-    border-color 0.15s ease,
-    color 0.15s ease;
-}
-
-.size-option:hover span {
-  border-color: #e2136e;
-  color: #e2136e;
-}
-
-.size-option.active span {
-  border-color: #e2136e;
-  background: #fff0f7;
-  color: #e2136e;
-}
-
-
-/* =========================================================
    SEARCH PRODUCTS
 ========================================================= */
 
@@ -753,6 +777,45 @@
     repeat(5, minmax(0, 1fr));
 
   gap: 12px;
+}
+
+.search-product-grid .pcard,
+.search-product-grid .pcard-media,
+.search-product-grid .pcard-image-link,
+.search-product-grid .pcard-body {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.search-product-grid .pcard-media,
+.search-product-grid .pcard-image-link {
+  height: auto;
+  aspect-ratio: 1;
+}
+
+.search-product-grid .pcard-media img {
+  width: 100%;
+  height: 100%;
+}
+
+.for-you-grid .for-you-card,
+.for-you-grid .for-you-card .pcard,
+.for-you-grid .for-you-card .pcard-media,
+.for-you-grid .for-you-card .pcard-image-link,
+.for-you-grid .for-you-card .pcard-body {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.for-you-grid .for-you-card .pcard-media,
+.for-you-grid .for-you-card .pcard-image-link {
+  height: auto;
+  aspect-ratio: 1;
+}
+
+.for-you-grid .for-you-card .pcard-media img {
+  width: 100%;
+  height: 100%;
 }
 
 

@@ -24,11 +24,12 @@
 
 .govaly-category-row {
   width: 100%;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
   align-items: flex-start;
   gap: 12px;
 
-  overflow-x: auto;
+  overflow-x: hidden;
   overflow-y: hidden;
 
   padding: 0;
@@ -47,8 +48,7 @@
    ========================================================= */
 
 .govaly-category-slide {
-  flex: 0 0 150px;
-  width: 150px;
+  width: 100%;
 
   display: block;
 
@@ -68,8 +68,9 @@
    ========================================================= */
 
 .govaly-category-card {
-  width: 150px;
-  height: 150px;
+  width: 100%;
+  aspect-ratio: 1;
+  height: auto;
 
   padding: 0;
   margin: 0;
@@ -94,8 +95,8 @@
    ========================================================= */
 
 .govaly-category-image {
-  width: 150px;
-  height: 150px;
+  width: 100%;
+  height: 100%;
 
   margin: 0 auto;
 

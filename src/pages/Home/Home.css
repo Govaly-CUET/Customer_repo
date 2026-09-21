@@ -131,9 +131,22 @@
 
   gap: 10px;
 
+  width: 100%;
+  box-sizing: border-box;
+
   overflow-x: auto;
 
-  padding: 4px 0 14px;
+  min-height: 70px;
+  padding: 10px 0;
+  padding-left: 25px;
+  padding-right: 50px;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  box-shadow: none;
 
   scrollbar-width: none;
 }
@@ -141,11 +154,14 @@
 @media (min-width: 768px) {
   .home-page .tabs {
     position: sticky;
-    padding-top: 18px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 25px;
+    padding-right: 50px;
+    padding-right: 0;
     top: 62px;
-    gap: 70px;
-    z-index: 40;
-    background: transparent;
+    gap: 0;
+    justify-content: space-between;
   }
 }
 
@@ -167,18 +183,15 @@
 
   border-radius: 999px;
 
-  padding: 9px 18px;
+  padding: 10px 22px;
 
   font-size: 14px;
   font-weight: 600;
 
-  cursor: pointer;
 
   transition:
     background 0.2s ease,
-    color 0.2s ease,
-    border-color 0.2s ease,
-    transform 0.2s ease;
+    color 0.2s ease;
 }
 
 
@@ -198,6 +211,8 @@
   border-color: #e2136e;
 
   color: #ffffff;
+
+  box-shadow: 0 3px 7px rgba(226, 19, 110, 0.2);
 }
 
 
@@ -211,6 +226,32 @@
   gap: 15px;
   width: 100%;
   box-sizing: border-box;
+}
+
+.home-page .grid .pcard,
+.home-page .grid .pcard-media,
+.home-page .grid .pcard-image-link,
+.home-page .grid .pcard-body {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.home-page .grid .pcard-media,
+.home-page .grid .pcard-image-link {
+  height: auto;
+  aspect-ratio: 1;
+}
+
+.home-page .grid .pcard-media img {
+  width: 100%;
+  height: 100%;
+}
+
+.home-products-loading {
+  min-height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
@@ -255,6 +296,11 @@
   .home-page .tab {
     padding: 8px 15px;
     font-size: 13px;
+  }
+
+  .home-page .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
   }
 }
 

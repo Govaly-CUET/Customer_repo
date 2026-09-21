@@ -1,5 +1,5 @@
 import './Home.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import api from '../../api.js';
@@ -75,6 +75,9 @@ function ProductTabs({ parents }) {
   const [tab, setTab] = useState('');
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+  const loadMoreRef = useRef(null);
 
   const tabs = [
     {
@@ -83,13 +86,14 @@ function ProductTabs({ parents }) {
     },
 
     ...parents.map((p) => ({
-      key: p.slug,
+      key: p._id || p.slug,
       label: p.name,
     })),
   ];
 
 
   useEffect(() => {
+    let cancelled = false;
     setLoading(true);
 
     api
@@ -97,25 +101,59 @@ function ProductTabs({ parents }) {
         params: {
           category: tab || undefined,
           limit: 12,
-          sort: 'popular',
+          page,
+          sort: 'new',
         },
       })
 
       .then(({ data }) => {
-        setItems(
-          normalizeProductList(data.items)
-        );
+        if (cancelled) return;
+
+        const nextItems = normalizeProductList(data.items);
+        setItems((currentItems) => (
+          page === 1
+            ? nextItems
+            : [...currentItems, ...nextItems]
+        ));
+        setHasMore(page < (data.pages || 1));
       })
 
       .catch(() => {
-        setItems([]);
+        if (cancelled) return;
+        if (page === 1) setItems([]);
+        setHasMore(false);
       })
 
       .finally(() => {
-        setLoading(false);
+        if (!cancelled) setLoading(false);
       });
 
-  }, [tab]);
+    return () => {
+      cancelled = true;
+    };
+  }, [tab, page]);
+
+  useEffect(() => {
+    const target = loadMoreRef.current;
+    if (!target || loading || !hasMore) return undefined;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setPage((currentPage) => currentPage + 1);
+      }
+    }, { rootMargin: '240px' });
+
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, [loading, hasMore]);
+
+  const selectTab = (nextTab) => {
+    setItems([]);
+    setPage(1);
+    setHasMore(false);
+    setLoading(true);
+    setTab(nextTab);
+  };
 
 
   return (
@@ -140,7 +178,7 @@ function ProductTabs({ parents }) {
             className={`tab${
               tab === t.key ? ' on' : ''
             }`}
-            onClick={() => setTab(t.key)}
+            onClick={() => selectTab(t.key)}
           >
             {t.label}
           </button>
@@ -153,7 +191,7 @@ function ProductTabs({ parents }) {
           PRODUCTS
           ================================================= */}
 
-      {loading ? (
+      {loading && page === 1 ? (
         <Spinner />
       ) : (
         <div className="grid">
@@ -166,6 +204,16 @@ function ProductTabs({ parents }) {
             />
           ))}
 
+        </div>
+      )}
+
+      {hasMore && (
+        <div
+          ref={loadMoreRef}
+          className="home-products-loading"
+          aria-live="polite"
+        >
+          {loading && <Spinner />}
         </div>
       )}
 
@@ -315,6 +363,7 @@ export default function Home() {
       <ProductTabs
         parents={parents}
       />
+
 
     </div>
   );

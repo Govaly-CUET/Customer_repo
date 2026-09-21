@@ -17,13 +17,7 @@ import ProductCard from '../../components/ProductCard/ProductCard.jsx';
 import { Spinner } from '../../components/ui/ui.jsx';
 import { useStore } from '../../context/StoreContext.jsx';
 
-const PRICE_BUCKETS = [
-  { label: 'Under ৳500', min: 0, max: 499 },
-  { label: '৳500 – ৳1000', min: 500, max: 1000 },
-  { label: '৳1000 – ৳2000', min: 1000, max: 2000 },
-  { label: '৳2000 – ৳5000', min: 2000, max: 5000 },
-  { label: '৳5000 & above', min: 5000, max: undefined },
-];
+const PRICE_LIMIT = 20000;
 
 const SORTS = [
   ['popular', 'Top Sold'],
@@ -294,18 +288,6 @@ export default function Listing() {
 
             <div className="search-heading-left">
 
-              <div className="search-breadcrumb">
-                <Link to="/">Home</Link>
-
-                <ChevronRight size={13} />
-
-                <span>Search</span>
-
-                <ChevronRight size={13} />
-
-                <strong>{search}</strong>
-              </div>
-
               <h1>
                 Search results for{' '}
                 <span>"{search}"</span>
@@ -476,105 +458,56 @@ export default function Listing() {
 
                 <h4>Price</h4>
 
-                {PRICE_BUCKETS.map((bucket) => (
-                  <label
-                    className="filter-radio"
-                    key={bucket.label}
-                  >
-
-                    <input
-                      type="radio"
-                      name="price"
-                      checked={
-                        String(bucket.min) === min &&
-                        String(bucket.max ?? '') === max
-                      }
-                      onChange={() =>
-                        patch({
-                          min: String(bucket.min),
-                          max:
-                            bucket.max != null
-                              ? String(bucket.max)
-                              : '',
-                        })
-                      }
-                    />
-
-                    <span>{bucket.label}</span>
-
-                  </label>
-                ))}
-
-                <label className="filter-radio">
-
-                  <input
-                    type="radio"
-                    name="price"
-                    checked={!min && !max}
-                    onChange={() =>
-                      patch({
-                        min: '',
-                        max: '',
-                      })
-                    }
-                  />
-
-                  <span>All prices</span>
-
-                </label>
-
-              </div>
-
-              {/* SIZE */}
-
-              <div className="filter-group">
-
-                <h4>Size</h4>
-
-                <div className="size-filter-grid">
-
-                  {[
-                    'S',
-                    'M',
-                    'L',
-                    'XL',
-                    'XXL',
-                    'Free Size',
-                    '39',
-                    '40',
-                    '41',
-                    '42',
-                    '43',
-                  ].map((item) => (
-                    <label
-                      className={`size-option ${
-                        size === item
-                          ? 'active'
-                          : ''
-                      }`}
-                      key={item}
-                    >
-
-                      <input
-                        type="radio"
-                        name="size"
-                        checked={size === item}
-                        onChange={() =>
-                          patch({
-                            size:
-                              size === item
-                                ? ''
-                                : item,
-                          })
-                        }
-                      />
-
-                      <span>{item}</span>
-
-                    </label>
-                  ))}
-
+                <div className="price-range-label">
+                  <strong>৳{Number(min || 0).toLocaleString()}</strong>
+                  <strong>৳{Number(max || PRICE_LIMIT).toLocaleString()}</strong>
                 </div>
+
+                <div className="price-range">
+                  <div className="price-range-track" />
+                  <input
+                    className="price-range-input price-range-min"
+                    type="range"
+                    min="0"
+                    max={PRICE_LIMIT}
+                    step="100"
+                    value={min || 0}
+                    aria-label="Minimum price"
+                    onChange={(event) => {
+                      const value = Math.min(
+                        Number(event.target.value),
+                        Number(max || PRICE_LIMIT)
+                      );
+                      patch({ min: value ? String(value) : '' });
+                    }}
+                  />
+                  <input
+                    className="price-range-input price-range-max"
+                    type="range"
+                    min="0"
+                    max={PRICE_LIMIT}
+                    step="100"
+                    value={max || PRICE_LIMIT}
+                    aria-label="Maximum price"
+                    onChange={(event) => {
+                      const value = Math.max(
+                        Number(event.target.value),
+                        Number(min || 0)
+                      );
+                      patch({ max: value < PRICE_LIMIT ? String(value) : '' });
+                    }}
+                  />
+                </div>
+
+                {(min || max) && (
+                  <button
+                    type="button"
+                    className="price-clear"
+                    onClick={() => patch({ min: '', max: '' })}
+                  >
+                    Clear price
+                  </button>
+                )}
 
               </div>
 
@@ -751,7 +684,7 @@ export default function Listing() {
 
                 <div className="category-section-header">
 
-                  <h2>All Products</h2>
+                  {/* <h2>All Products</h2> */}
 
                 </div>
 

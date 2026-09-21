@@ -80,6 +80,7 @@ export default function ProductDetail() {
           .get('/customer/products', {
             params: {
               category: product.category,
+              subcategory: product.subcategory,
               limit: 8,
             },
           })
