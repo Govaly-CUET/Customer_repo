@@ -113,8 +113,9 @@ function TrackTimeline({ orderId, fallbackStatus }) {
       )}
       {track.shipment?.stage && <div className="track-note">{track.shipment.stage}</div>}
       {track.shipment?.consignmentId && (
-        <div className="track-note mut">
-          Courier: {track.shipment.courier === 'pathao' ? 'Pathao' : track.shipment.courier} · Tracking ID: <b>{track.shipment.consignmentId}</b>
+        <div className="track-note track-courier">
+          <span>Courier: {track.shipment.courier === 'pathao' ? 'Pathao' : track.shipment.courier}</span>
+          <span>Tracking ID: <b className="track-id">{track.shipment.consignmentId}</b></span>
         </div>
       )}
     </div>
