@@ -591,7 +591,7 @@ export default function Header() {
           <span className="seller-divider" />
 
           <a
-            href={`${SELLER_APP_URL}/login`}
+            href={SELLER_APP_URL}
             className="seller-link"
           >
             Login as Seller
