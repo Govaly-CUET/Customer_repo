@@ -4,7 +4,7 @@ import storage from './storage.js';
 // Real backend (Backend-dev repo) — no dev-server proxy needed, point straight at it.
 // Set VITE_API_URL in client/.env for local dev (default assumes it runs on :5000)
 // and in your hosting provider's env vars for production.
-const api = axios.create({ baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api/v1' });
+const api = axios.create({ baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api/v1' });
 
 api.interceptors.request.use((config) => {
   const token = storage.get('govaly_token');
