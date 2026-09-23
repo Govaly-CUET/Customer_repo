@@ -384,7 +384,7 @@ export default function Profile() {
           <p className="mut" style={{ margin: '2px 0 0' }}>{sub}</p>
         </div>
 
-        {section === 'orders' && <Orders />}
+        {section === 'orders' && <Orders embedded />}
         {section === 'wishlist' && <WishlistSection />}
         {section === 'addresses' && <AddressesSection />}
         {(section === 'account' || !TITLES[section]) && <AccountSection />}

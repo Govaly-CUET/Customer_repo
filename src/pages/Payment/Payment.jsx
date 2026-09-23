@@ -1,7 +1,7 @@
 import './Payment.css';
 import { useState } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
-import { Banknote, CheckCircle2 } from 'lucide-react';
+import { Banknote } from 'lucide-react';
 import api, { errMsg } from '../../api.js';
 import { useStore } from '../../context/StoreContext.jsx';
 import Stepper from '../../components/Stepper/Stepper.jsx';
@@ -65,9 +65,6 @@ export default function Payment() {
                 <span className="mut" style={{ fontSize: 12.5 }}>Pay in cash when your parcel arrives — available all over Bangladesh.</span>
               </span>
             </label>
-            <div className="mut" style={{ fontSize: 12.5, marginTop: 10, display: 'flex', gap: 6, alignItems: 'center' }}>
-              <CheckCircle2 size={14} color="#12a150" /> You will pay <b>৳{total.toLocaleString('en-IN')}</b> in cash on delivery.
-            </div>
           </div>
 
           <div className="panel panel-pad">
@@ -100,7 +97,7 @@ export default function Payment() {
             >
               {busy ? 'Placing…' : 'Confirm Order'}
             </button>
-            <p className="mut" style={{ fontSize: 11.5, textAlign: 'center', marginTop: 8 }}>Cash on Delivery — pay when you receive.</p>
+            <p className="mut payment-note" style={{ fontSize: 11.5, textAlign: 'center', marginTop: 8 }}>Cash on Delivery — pay when you receive.</p>
           </div>
         </div>
       </div>

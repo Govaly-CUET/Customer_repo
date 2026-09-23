@@ -16,3 +16,13 @@
 .pay-opt.sel { border-color: var(--brand); box-shadow: 0 0 0 1.5px var(--brand); }
 
 .pay-opt input[type="radio"] { width: 17px; height: 17px; accent-color: #1a73e8; }
+
+.pay-opt > span:last-child { min-width: 0; overflow-wrap: anywhere; }
+
+.pay-opt > span:last-child .mut { display: block; white-space: normal; }
+
+.pay-opt + .mut { min-width: 0; flex-wrap: wrap; line-height: 1.45; }
+
+.payment-note { max-width: 100%; overflow-wrap: anywhere; white-space: normal; line-height: 1.45; }
+
+.ck-right, .ck-right > .panel { min-width: 0; }

@@ -224,7 +224,7 @@ function OrderCard({ o, onChanged }) {
   );
 }
 
-export default function Orders() {
+export default function Orders({ embedded = false }) {
   const [orders, setOrders] = useState(null);
   const [tab, setTab] = useState('All');
   const [menu, setMenu] = useState(false);
@@ -257,7 +257,7 @@ export default function Orders() {
         <span className="m-name">{user?.name || 'User Name'} <CheckCircle size={13} strokeWidth={2.6} /></span>
       </div>
 
-      <h2 className="dsk-only" style={{ margin: '0 2px 10px', fontSize: 22 }}>My Orders</h2>
+      {!embedded && <h2 className="dsk-only" style={{ margin: '0 2px 10px', fontSize: 22 }}>My Orders</h2>}
 
       <div className="otabs">
         {TABS.map((t) => (
